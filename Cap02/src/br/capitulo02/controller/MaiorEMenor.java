@@ -8,11 +8,8 @@ public class MaiorEMenor {
 	
 	public void encontra(CarrinhoDeCompras carrinho) {
 		for(Produto produto : carrinho.getProdutos()) {
-			if(menor == null || produto.getValor() < menor.getValor()) {
-				menor = produto;
-			}else if (maior == null || produto.getValor() > maior.getValor()){
-				maior = produto;
-			}
+			if(menor == null || produto.getValor() < menor.getValor()) menor = produto;
+			if (maior == null || produto.getValor() > maior.getValor())	maior = produto;
 		}
 	}
 	
