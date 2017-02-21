@@ -20,4 +20,16 @@ public class CarrinhoDeCompras {
 	public List<Item> getItens() {
 		return Collections.unmodifiableList(itens);
 	}
+	
+	public double maiorValor() {
+		if(this.itens.size() == 0) return 0;
+		
+		double maior = this.itens.get(0).getValorTotal();
+		
+		for (Item item : this.itens)
+			if(maior < item.getValorTotal())
+				maior = item.getValorTotal();
+		
+		return maior;
+	}
 }//class CarrinhoDeCompras
