@@ -12,13 +12,13 @@ public class ConversorDeNumeroRomano {
 				private static final long serialVersionUID = -3629228476309698642L;
 
 			{ put('I', 1);
-											  put('V', 5);
-											  put('X', 10);
-											  put('L', 50);
-											  put('C', 100);
-											  put('D', 500);
-											  put('M', 1000); 
-											  }};
+			  put('V', 5);
+			  put('X', 10);
+			  put('L', 50);
+			  put('C', 100);
+			  put('D', 500);
+			  put('M', 1000); 
+			  }};
 	
 	public int converte(String numeroEmRomano) {
 		int acumulador = 0;
