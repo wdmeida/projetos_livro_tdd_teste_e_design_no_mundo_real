@@ -42,10 +42,21 @@ public class CalculadoraDeSalarioTest {
 	public void deveCalcularSalarioParaDBAsComSalariosAbaixoDoLimite() {
 
 		CalculadoraDeSalario calculadora = new CalculadoraDeSalario();
-		Funcionario desenvolvedor = new Funcionario("Wagner", 500.00, Cargo.DBA);
+		Funcionario desenvolvedor = new Funcionario("Wagner", 1500.00, Cargo.DBA);
 		
 		double salario = calculadora.calculaSalario(desenvolvedor);
 		
-		assertEquals(500.00 * 0.85, salario, 0.00001);
+		assertEquals(1500.00 * 0.85, salario, 0.00001);
 	}//deveCalcularSalarioParaDBAsComSalariosAbaixoDoLimite()
+	
+	@Test
+	public void deveCalcularSalarioParaDBAsComSalarioAcimaDoLimite() {
+		
+		CalculadoraDeSalario calculadora = new CalculadoraDeSalario();
+		Funcionario desenvolvedor = new Funcionario("Wagner", 4500.0, Cargo.DBA);
+		
+		double salario = calculadora.calculaSalario(desenvolvedor);
+		
+		assertEquals(4500.0 * 0.75, salario, 0.00001);
+	}//deveCalcularSalarioParaDBAsComSalarioAcimaDoLimite()
 }//class CalculadoraDeSalarioTest
