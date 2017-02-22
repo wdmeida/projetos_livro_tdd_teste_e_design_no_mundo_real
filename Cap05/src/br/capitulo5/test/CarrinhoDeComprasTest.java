@@ -1,5 +1,6 @@
 package br.capitulo5.test;
 
+import br.capitulo5.builder.CarrinhoDeComprasBuilder;
 import br.capitulo5.controller.CarrinhoDeCompras;
 import br.capitulo5.model.Item;
 
@@ -26,7 +27,10 @@ public class CarrinhoDeComprasTest {
 	
 	@Test
 	public void deveRetornarValorDoItemSeCarrinhoCom1Elemento(){
-		carrinho.adiciona(new Item("Geladeira", 1, 900.00));
+		//Exemplo utilizando a classe builder criada.
+		CarrinhoDeCompras carrinho = new CarrinhoDeComprasBuilder()
+				.comItens(900.0)
+				.cria();
 	
 		assertEquals(900.00, carrinho.maiorValor(), 0.00001);
 	}
