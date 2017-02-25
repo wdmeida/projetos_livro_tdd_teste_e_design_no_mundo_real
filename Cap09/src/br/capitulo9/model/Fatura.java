@@ -9,12 +9,14 @@ import java.util.List;
  */
 public class Fatura {
 	private String cliente;
+	private double valorTotal;
+	private boolean pago;
 	private List<Pagamento> pagamentos;
 	
 	public Fatura(String cliente, double valor) {
 		this.cliente = cliente;
+		this.valorTotal = valor;
 		pagamentos = new ArrayList<>();
-		pagamentos.add(new Pagamento(valor, MeioDePagamento.BOLETO));
 	}
 
 	public String getCliente() {
@@ -27,5 +29,17 @@ public class Fatura {
 
 	public List<Pagamento> getPagamentos() {
 		return pagamentos;
+	}
+
+	public double getValorTotal() {
+		return valorTotal;
+	}
+
+	public boolean isPago() {
+		return pago;
+	}
+
+	public void setPago(boolean pago) {
+		this.pago = pago;
 	}
 }
