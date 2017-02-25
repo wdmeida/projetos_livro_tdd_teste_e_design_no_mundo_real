@@ -10,16 +10,11 @@ import br.capitulo9.model.Pagamento;
 public class ProcessadorDeBoletos {
 	
 	public void processa(List<Boleto> boletos, Fatura fatura) {
-		double valorTotal = 0;
-		
-		for (Boleto boleto : boletos) {
-			Pagamento pagamento = new Pagamento(boleto.getValor(), MeioDePagamento.BOLETO);
-			fatura.getPagamentos().add(pagamento);
+		boletos.forEach( boleto -> {
+			Pagamento pagamento = new Pagamento(boleto.getValor(), 
+												MeioDePagamento.BOLETO);
 			
-			valorTotal += boleto.getValor();
-		}
-		
-		if (valorTotal >= fatura.getValorTotal())
-			fatura.setPago(true);
-	}
+			fatura.adicionaPagamento(pagamento);
+		});
+	}//processa()
 }
