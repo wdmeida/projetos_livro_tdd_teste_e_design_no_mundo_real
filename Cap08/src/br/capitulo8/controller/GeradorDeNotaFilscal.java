@@ -7,6 +7,7 @@ import br.capitulo8.model.NotaFiscal;
 import br.capitulo8.model.Pedido;
 import br.capitulo8.model.Relogio;
 import br.capitulo8.model.RelogioDoSistema;
+import br.capitulo8.model.Tabela;
 
 /*
  * Após a modificação, a classe GeradorDeNotaFiscal não está mais fortemente
@@ -21,10 +22,21 @@ import br.capitulo8.model.RelogioDoSistema;
 public class GeradorDeNotaFilscal {
 	private final List<AcaoAposGerarNota> acoes;
 	private final Relogio relogio;
-
+	private Tabela tabela;
+	
 	public GeradorDeNotaFilscal(List<AcaoAposGerarNota> acoes, Relogio relogio) {
 		this.acoes = acoes;
 		this.relogio = relogio;
+	}
+	
+	public GeradorDeNotaFilscal(List<AcaoAposGerarNota> acoes, Relogio relogio, Tabela tabela) {
+		this.acoes = acoes;
+		this.relogio = relogio;
+		this.tabela = tabela;
+	}
+	
+	public GeradorDeNotaFilscal(List<AcaoAposGerarNota> acoes, Tabela tabela) {
+		this(acoes, new RelogioDoSistema(), tabela);
 	}
 	
 	public GeradorDeNotaFilscal(List<AcaoAposGerarNota> acoes){
@@ -33,7 +45,7 @@ public class GeradorDeNotaFilscal {
 	
 	public NotaFiscal gera(Pedido pedido) {
 		NotaFiscal nf = new NotaFiscal(pedido.getCliente(),
-				pedido.getValorTotal() * 0.94, 
+				pedido.getValorTotal() * tabela.paraValor(pedido.getValorTotal()), 
 				relogio.hoje());
 		
 		//Executa todas as ações com a nota fiscal gerada.
